@@ -12,3 +12,11 @@ class SchemaCreateList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class SchemaUpdate(generics.RetrieveUpdateAPIView):
+    queryset = Schema.objects.all()
+    serializer_class = SchemaSerializer
+    lookup_field = "pk"
+
+    def perform_update(self, serializer):
+        isinstance = serializer.save()

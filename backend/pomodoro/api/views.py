@@ -20,3 +20,11 @@ class SchemaUpdate(generics.RetrieveUpdateAPIView):
 
     def perform_update(self, serializer):
         isinstance = serializer.save()
+
+class SchemaDelete(generics.RetrieveDestroyAPIView):
+    queryset = Schema.objects.all()
+    serializer_class = SchemaSerializer
+    lookup_field = "pk"
+
+    def perform_destroy(self, instance):
+        super().perform_destroy(instance)

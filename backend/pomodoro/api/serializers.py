@@ -5,7 +5,6 @@ class SchemaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schema
         fields = [
-            "user",
             "duration",
             "standard_break",
             "long_break",

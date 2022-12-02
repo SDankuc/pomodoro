@@ -4,8 +4,11 @@ from timetracker.models import Schema
 
 # Create your views here.
 
-class SchemaList(generics.ListAPIView):
+class SchemaCreateList(generics.ListCreateAPIView):
     serializer_class = SchemaSerializer
 
     def get_queryset(self):
         return Schema.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

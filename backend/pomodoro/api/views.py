@@ -28,3 +28,8 @@ class SchemaDelete(generics.RetrieveDestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+class SchemaDetail(generics.RetrieveAPIView):
+    queryset = Schema.objects.all()
+    serializer_class = SchemaSerializer
+    lookup_field = "pk"

@@ -42,3 +42,14 @@ class CategoryCreateList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class CategoryRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    lookup_field = "pk"
+
+    def perform_destroy(self, instance):
+        super().perform_destroy(instance)
+
+    def perform_update(self, serializer):
+        isinstance = serializer.save()

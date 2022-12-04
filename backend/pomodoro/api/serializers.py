@@ -14,3 +14,12 @@ class SchemaSerializer(serializers.ModelSerializer):
             "auto_start_breaks",
             "active",
         ]
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = [
+            "id",
+            "title",
+            "default"
+        ]

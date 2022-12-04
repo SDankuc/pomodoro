@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .serializers import SchemaSerializer, CategorySerializer
-from timetracker.models import Schema, Category
+from .serializers import SchemaSerializer, CategorySerializer, PomodoroSerializer
+from timetracker.models import Schema, Category, Pomodoro
 
 # Create your views here.
 
@@ -46,6 +46,26 @@ class CategoryCreateList(generics.ListCreateAPIView):
 class CategoryRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    lookup_field = "pk"
+
+    def perform_destroy(self, instance):
+        super().perform_destroy(instance)
+
+    def perform_update(self, serializer):
+        isinstance = serializer.save()
+
+class PomodoroCreateList(generics.ListCreateAPIView):
+    serializer_class = PomodoroSerializer
+
+    def get_queryset(self):
+        return Pomodoro.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class PomodoroRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Pomodoro.objects.all()
+    serializer_class = PomodoroSerializer
     lookup_field = "pk"
 
     def perform_destroy(self, instance):

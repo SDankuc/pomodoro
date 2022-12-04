@@ -23,3 +23,13 @@ class CategorySerializer(serializers.ModelSerializer):
             "title",
             "default"
         ]
+
+class PomodoroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pomodoro
+        fields = [
+            "id",
+            "category_id",
+            "title",
+            "amount"
+        ]

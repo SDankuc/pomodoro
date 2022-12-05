@@ -31,5 +31,21 @@ class PomodoroSerializer(serializers.ModelSerializer):
             "id",
             "category_id",
             "title",
-            "amount"
+            "amount",
+            "done"
+        ]
+
+class PomodoroAmountSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
+    category_id = CategorySerializer(read_only = True)
+    title = serializers.ReadOnlyField()
+    done = serializers.ReadOnlyField()
+    class Meta:
+        model = Pomodoro
+        fields = [
+            "id",
+            "category_id",
+            "title",
+            "amount",
+            "done"
         ]

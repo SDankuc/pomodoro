@@ -20,7 +20,10 @@ class SchemaUpdate(generics.RetrieveUpdateAPIView):
     lookup_field = "pk"
 
     def perform_update(self, serializer):
-        isinstance = serializer.save()
+        active = serializer.validated_data.get("active")
+        if active == True:
+            Schema.objects.all().update(active=False)
+        isinstance = serializer.save(active=active)
 
 class SchemaDelete(generics.RetrieveDestroyAPIView):
     queryset = Schema.objects.all()

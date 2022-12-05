@@ -2,11 +2,13 @@ from rest_framework import generics
 from .serializers import SchemaSerializer, CategorySerializer, PomodoroSerializer, PomodoroAmountSerializer
 from timetracker.models import Schema, Category, Pomodoro
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 class SchemaCreateList(generics.ListCreateAPIView):
     serializer_class = SchemaSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return Schema.objects.all()
@@ -17,6 +19,7 @@ class SchemaCreateList(generics.ListCreateAPIView):
 class SchemaUpdate(generics.RetrieveUpdateAPIView):
     queryset = Schema.objects.all()
     serializer_class = SchemaSerializer
+    permission_classes = (IsAuthenticated,)
     lookup_field = "pk"
 
     def perform_update(self, serializer):
@@ -28,6 +31,7 @@ class SchemaUpdate(generics.RetrieveUpdateAPIView):
 class SchemaDelete(generics.RetrieveDestroyAPIView):
     queryset = Schema.objects.all()
     serializer_class = SchemaSerializer
+    permission_classes = (IsAuthenticated,)
     lookup_field = "pk"
 
     def perform_destroy(self, instance):
@@ -36,10 +40,12 @@ class SchemaDelete(generics.RetrieveDestroyAPIView):
 class SchemaDetail(generics.RetrieveAPIView):
     queryset = Schema.objects.all()
     serializer_class = SchemaSerializer
+    permission_classes = (IsAuthenticated,)
     lookup_field = "pk"
 
 class CategoryCreateList(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return Category.objects.all()
@@ -50,6 +56,7 @@ class CategoryCreateList(generics.ListCreateAPIView):
 class CategoryRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (IsAuthenticated,)
     lookup_field = "pk"
 
     def perform_destroy(self, instance):
@@ -60,6 +67,7 @@ class CategoryRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 class PomodoroCreateList(generics.ListCreateAPIView):
     serializer_class = PomodoroSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return Pomodoro.objects.all()
@@ -70,6 +78,7 @@ class PomodoroCreateList(generics.ListCreateAPIView):
 class PomodoroRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pomodoro.objects.all()
     serializer_class = PomodoroSerializer
+    permission_classes = (IsAuthenticated,)
     lookup_field = "pk"
 
     def perform_destroy(self, instance):
@@ -81,6 +90,7 @@ class PomodoroRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 class PomodoroUpdateAmount(generics.RetrieveUpdateAPIView):
     queryset = Pomodoro.objects.all()
     serializer_class = PomodoroAmountSerializer
+    permission_classes = (IsAuthenticated,)
     lookup_field = "pk"
 
     def perform_update(self, serializer):

@@ -21,3 +21,4 @@ class Pomodoro(models.Model):
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     amount = models.IntegerField()
+    done = models.BooleanField(default=False)

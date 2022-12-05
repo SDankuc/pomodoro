@@ -10,4 +10,5 @@ urlpatterns = [
     path("category/<int:pk>/",views.CategoryRetrieveUpdateDestroy.as_view()),
     path("pomodoro/",views.PomodoroCreateList.as_view()),
     path("pomodoro/<int:pk>/",views.PomodoroRetrieveUpdateDestroy.as_view()),
+    path("pomodoro/<int:pk>/amount",views.PomodoroUpdateAmount.as_view()),
 ]

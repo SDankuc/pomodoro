@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
+
 class SchemaCreateList(generics.ListCreateAPIView):
     serializer_class = SchemaSerializer
     permission_classes = (IsAuthenticated,)
@@ -16,19 +17,7 @@ class SchemaCreateList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-class SchemaUpdate(generics.RetrieveUpdateAPIView):
-    queryset = Schema.objects.all()
-    serializer_class = SchemaSerializer
-    permission_classes = (IsAuthenticated,)
-    lookup_field = "pk"
-
-    def perform_update(self, serializer):
-        active = serializer.validated_data.get("active")
-        if active == True:
-            Schema.objects.all().update(active=False)
-        isinstance = serializer.save(active=active)
-
-class SchemaDelete(generics.RetrieveDestroyAPIView):
+class SchemaRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Schema.objects.all()
     serializer_class = SchemaSerializer
     permission_classes = (IsAuthenticated,)
@@ -36,12 +25,12 @@ class SchemaDelete(generics.RetrieveDestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
-
-class SchemaDetail(generics.RetrieveAPIView):
-    queryset = Schema.objects.all()
-    serializer_class = SchemaSerializer
-    permission_classes = (IsAuthenticated,)
-    lookup_field = "pk"
+    
+    def perform_update(self, serializer):
+        active = serializer.validated_data.get("active")
+        if active == True:
+            Schema.objects.all().update(active=False)
+        isinstance = serializer.save(active=active)
 
 class CategoryCreateList(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
@@ -100,9 +89,7 @@ class PomodoroUpdateAmount(generics.RetrieveUpdateAPIView):
             done = True
             serializer.save(done=done, amount=amount)
         elif amount < 0:
-            return Response({"Invalid":"amount can not be less than 0"}, status=400)
+            return Response({"Invalid": "amount can not be less than 0"}, status=400)
         else:
             done = False
             serializer.save(done=done, amount=amount)
-        
-

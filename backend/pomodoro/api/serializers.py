@@ -1,5 +1,24 @@
 from rest_framework import serializers
 from timetracker.models import Schema,Pomodoro,Category
+from django.contrib.auth import get_user_model
+
+UserModel = get_user_model()
+
+class UserSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+
+    def create(self, validated_data):
+
+        user = UserModel.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
+        return user
+
+    class Meta:
+        model = UserModel
+        fields = ( "id", "username", "password", )
 
 class SchemaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,17 +54,3 @@ class PomodoroSerializer(serializers.ModelSerializer):
             "done"
         ]
 
-class PomodoroAmountSerializer(serializers.ModelSerializer):
-    id = serializers.ReadOnlyField()
-    category_id = CategorySerializer(read_only = True)
-    title = serializers.ReadOnlyField()
-    done = serializers.ReadOnlyField()
-    class Meta:
-        model = Pomodoro
-        fields = [
-            "id",
-            "category_id",
-            "title",
-            "amount",
-            "done"
-        ]

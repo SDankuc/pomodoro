@@ -1,11 +1,24 @@
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 from rest_framework import generics
-from .serializers import SchemaSerializer, CategorySerializer, PomodoroSerializer, PomodoroAmountSerializer
+from .serializers import SchemaSerializer, CategorySerializer, PomodoroSerializer, UserSerializer
 from timetracker.models import Schema, Category, Pomodoro
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
+from rest_framework.authtoken.models import Token
+from django.contrib.auth import get_user_model
+from rest_framework import permissions
 
 # Create your views here.
+
+class CreateUserView(generics.CreateAPIView):
+
+    model = get_user_model()
+    permission_classes = [
+        permissions.AllowAny # Or anon users can't register
+    ]
+    serializer_class = UserSerializer
 
 
 class SchemaCreateList(generics.ListCreateAPIView):

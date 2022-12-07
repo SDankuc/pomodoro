@@ -1,0 +1,862 @@
+{
+	"info": {
+		"_postman_id": "4da86a35-370a-44fe-9d8c-4e08d6fd3032",
+		"name": "Pomodoro",
+		"description": "Start project locally:\n\n- In Terminal open folder which contains manage.py file. (/Pomodoro/pomodoro/backend/pomodoro)\n- command for starting project: python3 manage.py runserver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24624312"
+	},
+	"item": [
+		{
+			"name": "Schema",
+			"item": [
+				{
+					"name": "GetSchemas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/schemas/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"schemas",
+								""
+							]
+						},
+						"description": "Get list of all Schema objects"
+					},
+					"response": []
+				},
+				{
+					"name": "GetSchemaById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/schema/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"schema",
+								"id",
+								""
+							]
+						},
+						"description": "Get Schema object by id.\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/schema/1/](http://127.0.0.1:8000/api/schema/1/)"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateSchema",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "duration",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "standard_break",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "long_break",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "long_break_delay",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "auto_start_pomodoros",
+									"value": "<bool>",
+									"type": "text"
+								},
+								{
+									"key": "auto_start_breaks",
+									"value": "<bool>",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "<bool>",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/schema/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"schema",
+								"id",
+								""
+							]
+						},
+						"description": "Update Schema, boolean values are not mandatory (default False). if active is set to True all other Schema will be deactivated\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/schema/1/](http://127.0.0.1:8000/api/schema/1/)"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSchema",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/schema/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"schema",
+								"id",
+								""
+							]
+						},
+						"description": "Delete Schema by id\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/schema/1/](http://127.0.0.1:8000/api/schema/1/)"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateSchema",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "duration",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "standard_break",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "long_break",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "long_break_delay",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "auto_start_pomodoros",
+									"value": "<bool>",
+									"type": "text"
+								},
+								{
+									"key": "auto_start_breaks",
+									"value": "<bool>",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "<bool>",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/schemas/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"schemas",
+								""
+							]
+						},
+						"description": "Create new Schema\n\nIf the new Schema is created with active set to true all other Schema objects will be deactivated."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "GetCategories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						},
+						"description": "Get list of all Category objects"
+					},
+					"response": []
+				},
+				{
+					"name": "GetCategoryById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"id",
+								""
+							]
+						},
+						"description": "Get Category object by id.\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/category/1/](https://desktop.postman.com/?desktopVersion=9.31.0&userId=24624312&teamId=0)"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "<string>",
+									"type": "text"
+								},
+								{
+									"key": "default",
+									"value": "<bool>",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"id",
+								""
+							]
+						},
+						"description": "Update Schema.\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/category/1/](https://desktop.postman.com/?desktopVersion=9.31.0&userId=24624312&teamId=0)"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"id",
+								""
+							]
+						},
+						"description": "Delete Category by id\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/category/1/](http://127.0.0.1:8000/api/schema/1/)"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "<string>",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						},
+						"description": "Create new Category"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pomodoro",
+			"item": [
+				{
+					"name": "GetPomodoros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/pomodoros/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pomodoros",
+								""
+							]
+						},
+						"description": "Get all Pomodoro objects"
+					},
+					"response": []
+				},
+				{
+					"name": "GetPomodoroById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/pomodoro/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pomodoro",
+								"id",
+								""
+							]
+						},
+						"description": "Get Pomodoro object by id.\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/pomodoro/1/](https://desktop.postman.com/?desktopVersion=9.31.0&userId=24624312&teamId=0)"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePomodoro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "category_id",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "<string>",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "<int>",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/pomodoro/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pomodoro",
+								"id",
+								""
+							]
+						},
+						"description": "Update Pomodoro.\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/pomodoro/1/](https://desktop.postman.com/?desktopVersion=9.31.0&userId=24624312&teamId=0)"
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePomodoro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwMzI3MDY4LCJpYXQiOjE2NzAzMjM0NjgsImp0aSI6IjQ4YWJhZjZiODNjNTRhY2I5ZjI5YmJkNzZjZjgwNmZkIiwidXNlcl9pZCI6MX0.MESy7GQ1k1BgoTH-elNtwa8a0vlO5RXmCUIbZTnUUU4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/pomodoro/id/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pomodoro",
+								"id",
+								""
+							]
+						},
+						"description": "Delete Pomodoro by id\n\nput value of id instead of id in the url\n\nexample:  \n[http://127.0.0.1:8000/api/category/1/](http://127.0.0.1:8000/api/schema/1/)"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePomodoroAmount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/pomodoro/id/amount",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pomodoro",
+								"id",
+								"amount"
+							]
+						},
+						"description": "Update Pomodoro amount.  \nThis Post Method decreases amount by 1, when the amount reaches zero done will be set to True\n\nput value of id instead of id in the url\n\nexample:  \nhttp://127.0.0.1:8000/api/pomodoro/1/amount"
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePomodoro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "category_id",
+									"value": "<int>",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "<string>",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "<int>",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/pomodoros/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pomodoros",
+								""
+							]
+						},
+						"description": "Create new Pomodoro"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "<username>",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "<password>",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "refresh",
+							"value": "<token>",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "<username>",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "<password>",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/signup/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signup",
+						""
+					]
+				},
+				"description": "Creates new User"
+			},
+			"response": []
+		}
+	]
+}

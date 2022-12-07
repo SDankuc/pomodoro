@@ -29,7 +29,10 @@ class SchemaCreateList(generics.ListCreateAPIView):
         return Schema.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        active = serializer.validated_data.get("active")
+        if active == True:
+            Schema.objects.all().update(active=False)
+        serializer.save(user=self.request.user, active=active)
 
 class SchemaRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Schema.objects.all()
@@ -76,6 +79,7 @@ class PomodoroCreateList(generics.ListCreateAPIView):
         return Pomodoro.objects.all()
 
     def perform_create(self, serializer):
+        amount = serializer.validated_data.get("amount")
         serializer.save(user=self.request.user)
 
 class PomodoroRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
